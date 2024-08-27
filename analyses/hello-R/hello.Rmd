@@ -23,7 +23,8 @@ Load libraries and set initial paths.
 suppressPackageStartupMessages({
   library("SingleCellExperiment")
   library(
-    "ggplot2   ")
+    "ggplot2   "
+  )
 })
 ```
 
@@ -75,14 +76,13 @@ count_sce <- function(sce_file) {
   # load the SCE object
   sce <- readRDS(
     sce_file
-
   )
 
   # input check
   stopifnot("
   `sce_file` must contain a SingleCellExperiment object" = is(
-    sce, "SingleCellExperiment")
-  )
+    sce, "SingleCellExperiment"
+  ))
 
   # get stats and count the cells
   result_df <- data.frame(
@@ -105,8 +105,7 @@ We will use `list.files()` to do this all in one shot, using the option to searc
 
 ```{r}
 # get the list of processed SCE files
-sce_files <- list.files(data_dir, pattern = "_processed.rds$", full.names = TRUE,recursive = TRUE
-)
+sce_files <- list.files(data_dir, pattern = "_processed.rds$", full.names = TRUE, recursive = TRUE)
 ```
 
 Now we will use the `purrr` package to apply our counting function to each of the files, and then combine all of the results into a single data frame.
