@@ -40,8 +40,7 @@ jobs:
       - name: Style R code for each analysis module
         run: |
           list.files(
-            "analyses",
-            "${{ matrix.module }}",
+            "analyses/${{ matrix.module }}",
             recursive = TRUE,
             full.names = TRUE,
             pattern = "\\.(r|rmd)$", ignore.case = TRUE
