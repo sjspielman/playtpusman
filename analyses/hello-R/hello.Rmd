@@ -23,7 +23,7 @@ Load libraries and set initial paths.
 suppressPackageStartupMessages({
   library("SingleCellExperiment")
   library(
-    "ggplot2")
+    "ggplot2   ")
 })
 ```
 
@@ -73,10 +73,16 @@ count_sce <- function(sce_file) {
   # - n_cells: number of cells in the library
 
   # load the SCE object
-  sce <- readRDS(sce_file)
+  sce <- readRDS(
+    sce_file
+
+  )
 
   # input check
-  stopifnot("`sce_file` must contain a SingleCellExperiment object" = is(sce, "SingleCellExperiment"))
+  stopifnot("
+  `sce_file` must contain a SingleCellExperiment object" = is(
+    sce, "SingleCellExperiment")
+  )
 
   # get stats and count the cells
   result_df <- data.frame(
