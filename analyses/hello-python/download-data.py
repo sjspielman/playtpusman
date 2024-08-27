@@ -9,7 +9,7 @@ import os
 import pathlib
 import re
 import subprocess
-import    sys
+import sys
 from typing import List, Set
 
 # enable text formatting on Windows
@@ -98,11 +98,11 @@ def get_download_size(
     """
     ls_cmd = ["aws", "s3", "ls", f"s3://{bucket}/{release}/", "--recursive"]
     if profile:
-        ls_cmd +=    ["--profile"  , profile]
+        ls_cmd += ["--profile", profile]
     if test_data:
         ls_cmd += ["--no-sign-request"]
     file_list = subprocess.run(ls_cmd, capture_output=True, text=True)
-    file_list.check_returncode(      )
+    file_list.check_returncode()
 
     total_size = 0
     for line in file_list.stdout.splitlines():
