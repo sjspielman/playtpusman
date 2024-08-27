@@ -41,7 +41,7 @@ jobs:
         run: |
           list.files(
             "analyses",
-            ${{ matrix.module }},
+            "${{ matrix.module }}",
             recursive = TRUE,
             full.names = TRUE,
             pattern = "\\.(r|rmd)$", ignore.case = TRUE
