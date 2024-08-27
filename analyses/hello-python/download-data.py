@@ -102,7 +102,7 @@ def get_download_size(
     if test_data:
         ls_cmd += ["--no-sign-request"]
     file_list = subprocess.run(ls_cmd, capture_output=True, text=True)
-    file_list.check_returncode()
+    file_list.check_returncode(      )
 
     total_size = 0
     for line in file_list.stdout.splitlines():
