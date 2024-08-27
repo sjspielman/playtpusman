@@ -58,7 +58,7 @@ jobs:
       - name: Style Python code for each analysis module
         uses: chartboost/ruff-action@v1
         with:
-          args: format analyses/${{ matrix.module }}
+          args: format "analyses/${{ matrix.module }}"
 
       - name: Create PR with styled code
         uses: peter-evans/create-pull-request@v6 # defaults to ${GITHUB_TOKEN} token
