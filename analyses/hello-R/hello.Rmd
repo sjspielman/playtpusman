@@ -22,7 +22,8 @@ Load libraries and set initial paths.
 # load required libraries
 suppressPackageStartupMessages({
   library("SingleCellExperiment")
-  library("ggplot2")
+  library(
+    "ggplot2")
 })
 ```
 
@@ -98,11 +99,7 @@ We will use `list.files()` to do this all in one shot, using the option to searc
 
 ```{r}
 # get the list of processed SCE files
-sce_files <- list.files(
-  data_dir,
-  pattern = "_processed.rds$",
-  full.names = TRUE,
-  recursive = TRUE
+sce_files <- list.files(data_dir, pattern = "_processed.rds$", full.names = TRUE,recursive = TRUE
 )
 ```
 
