@@ -26,7 +26,7 @@ jobs:
           # From input `mature-modules.json`, read in modules which should be styled and save to $GITHUB_OUTPUT
           #echo jq -c . < ".github/workflows/mature-modules.json" > $GITHUB_OUTPUT
           #echo "matrix=$(jq -c . < ./.github/workflows/mature-modules.json)" > $GITHUB_OUTPUT
-          matrixStringifiedObject="{\"module\":[{\"hello-R\"},\"hello-python\"}]}"
+           matrixStringifiedObject="{\"include\":[{\"module\":\"hello-R\"},{\"module\":\"hello-python\"}]}"
           echo "matrix=$matrixStringifiedObject" >> $GITHUB_OUTPUT
 
   style-code:
