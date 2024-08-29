@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Setup the module matrix
     outputs:
-      module: ${{ steps.read-modules.module }}
+      module: ${{ steps.read-modules.outputs.module }}
 
     steps:
       - name: Checkout repository
@@ -39,7 +39,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        module: ${{ fromJSON(needs.setup-module-matrix.module) }}
+        module: ${{ fromJSON(needs.setup-module-matrix.outputs.module) }}
 
     steps:
       - name: Checkout repo
