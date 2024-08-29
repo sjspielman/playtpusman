@@ -1,5 +1,6 @@
 name: Sample Run Include Syntax Json Format
-on: push
+on:
+  worflow_dispatch:
 jobs:
   job1:
     runs-on: ubuntu-latest
