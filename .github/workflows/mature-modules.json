@@ -1,4 +1,4 @@
-"module" = [
-  "hello-R",
-  "hello-python"
-]
+{"includes": [
+  {"module": "hello-R"},
+  {"module": "hello-python"}
+]}
