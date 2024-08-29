@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Setup the module matrix
     outputs:
-      module: ${{ steps.setup-module-matrix.modules }}
+      module: ${{ steps.setup-module-matrix.module }}
 
     steps:
       - name: Checkout repository
@@ -30,7 +30,7 @@ jobs:
         id: read-modules
         run: |
           # From input `mature-modules.json`, read in modules which should be styled and save to $GITHUB_OUTPUT
-          echo "matrix=$(jq -c . < .github/workflows/mature-modules.json)" > $GITHUB_OUTPUT
+          echo "module=$(jq -c . < .github/workflows/mature-modules.json)" > $GITHUB_OUTPUT
 
   style-code:
     runs-on: ubuntu-latest
