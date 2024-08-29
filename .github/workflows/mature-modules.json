@@ -1,0 +1,6 @@
+{
+    modules: [
+        "hello-R",
+        "hello-python"
+    ]
+}
