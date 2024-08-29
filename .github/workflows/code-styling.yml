@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Setup the module matrix
     outputs:
-      module: ${{ steps.setup-module-matrix.module }}
+      module: ${{ steps.read-modules.module }}
 
     steps:
       - name: Checkout repository
