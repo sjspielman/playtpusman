@@ -37,6 +37,7 @@ jobs:
   print-it:
     runs-on: ubuntu-latest
     name: print baby
+    needs: setup-module-matrix
     strategy:
       matrix:
         usernames: ${{ fromJSON(needs.setup-module-matrix.outputs.module) }}
