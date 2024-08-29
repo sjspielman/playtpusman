@@ -35,8 +35,7 @@ jobs:
     needs: setup-module-matrix
     strategy:
       fail-fast: false
-      matrix:
-        matrix: ${{ fromJSON(needs.setup-module-matrix.outputs.matrix) }}
+      matrix: ${{ fromJSON(needs.setup-module-matrix.outputs.matrix) }}
 
     steps:
       - name: Checkout repo
