@@ -30,7 +30,7 @@ jobs:
         id: read-modules
         run: |
           # From input `mature-modules.json`, read in modules which should be styled and save to $GITHUB_OUTPUT
-          cat mature-modules.json > $GITHUB_OUTPUT
+          cat .github/workflows/mature-modules.json > $GITHUB_OUTPUT
 
   style-code:
     runs-on: ubuntu-latest
