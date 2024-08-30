@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Setup the module matrix
     outputs:
-      matrix: ${{ steps.read-modules.outputs.matrix }}
+      module: ${{ steps.read-modules.outputs.modules }}
 
     steps:
       - name: Checkout repository
@@ -25,9 +25,10 @@ jobs:
         run: |
           # From input `mature-modules.json`, read in modules which should be styled and save to $GITHUB_OUTPUT
           #echo jq -c . < ".github/workflows/mature-modules.json" > $GITHUB_OUTPUT
-          echo "matrix=$(jq -cr . < ./.github/workflows/mature-modules.json)" > $GITHUB_OUTPUT
+          #echo "matrix=$(jq -cr . < ./.github/workflows/mature-modules.json)" > $GITHUB_OUTPUT
           #  matrixStringifiedObject="{\"include\":[{\"module\":\"hello-R\"},{\"module\":\"hello-python\"}]}"
           #echo "matrix=$matrixStringifiedObject" >> $GITHUB_OUTPUT
+          echo "modules=$(jq -nRc '[inputs]|map(select(length>0))' mature-modules.txt) >> $GITHUB_OUTPUT
 
   style-code:
     runs-on: ubuntu-latest
@@ -35,7 +36,7 @@ jobs:
     needs: setup-module-matrix
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.setup-module-matrix.outputs.matrix) }}
+      matrix: ${{ fromJSON(needs.setup-module-matrix.outputs.module) }}
 
     steps:
       - name: Checkout repo
