@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Setup the module matrix
     outputs:
-      module: ${{ steps.read-modules.outputs.module }}
+      mature-modules: ${{ steps.read-modules.outputs.module }}
 
     steps:
       - name: Checkout repository
@@ -28,7 +28,7 @@ jobs:
           #echo "matrix=$(jq -cr . < ./.github/workflows/mature-modules.json)" > $GITHUB_OUTPUT
           #  matrixStringifiedObject="{\"include\":[{\"module\":\"hello-R\"},{\"module\":\"hello-python\"}]}"
           #echo "matrix=$matrixStringifiedObject" >> $GITHUB_OUTPUT
-          echo "module=$(jq -nRrc '[inputs]|map(select(length>0))' mature-modules.json)" >> $GITHUB_OUTPUT
+          echo "module=$(jq -nRrc '[inputs]|map(select(length>0))' mature-modules.txt)" >> $GITHUB_OUTPUT
 
   style-code:
     runs-on: ubuntu-latest
@@ -36,7 +36,8 @@ jobs:
     needs: setup-module-matrix
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.setup-module-matrix.outputs.module) }}
+        matrix:
+          module: ${{ fromJSON(needs.setup-module-matrix.outputs.mature-modules) }}
 
     steps:
       - name: Checkout repo

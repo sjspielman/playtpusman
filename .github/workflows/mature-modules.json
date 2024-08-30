@@ -1,2 +1,4 @@
-hello-R
-hello-python
+{"module": [
+    "hello-R",
+    "hello-python"
+]}
