@@ -28,7 +28,7 @@ jobs:
           #echo "matrix=$(jq -cr . < ./.github/workflows/mature-modules.json)" > $GITHUB_OUTPUT
           #  matrixStringifiedObject="{\"include\":[{\"module\":\"hello-R\"},{\"module\":\"hello-python\"}]}"
           #echo "matrix=$matrixStringifiedObject" >> $GITHUB_OUTPUT
-          echo "module=$(jq -nRrc '[inputs]|map(select(length>0))' mature-modules.txt)" >> $GITHUB_OUTPUT
+          echo "module=$(jq -nRrc '[inputs]|map(select(length>0))' ./.github/workflows/mature-modules.txt)" > $GITHUB_OUTPUT
 
   style-code:
     runs-on: ubuntu-latest
